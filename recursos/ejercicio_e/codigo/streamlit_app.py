@@ -1,7 +1,6 @@
-"""Aplicación web Streamlit para la estimación del precio de viviendas en California.
+"""Interfaz Streamlit para estimar el precio de casas en California.
 
-Conecta una interfaz de usuario interactiva con un servicio de inferencia de IA (FastAPI)
-para predecir el valor mediano de viviendas en función de las características de la zona censal.
+Llama a la API FastAPI (POST /predict) con los datos de la zona y enseña el precio.
 
 Autores: David Araiz Saez, Daniel Bernal Anzano
 """
@@ -45,20 +44,19 @@ def format_price(med_house_val: float) -> str:
     return f"${precio:,.0f}"
 
 
-# ---------------------------------------------------------------- Interfaz --
 st.set_page_config(page_title="Precio de casas en California")
 st.title("Precio de casas en California")
 st.caption(f"{AUTORES} - P3")
 st.write("Introduce los datos de la zona y estima el precio medio de sus viviendas.")
 
-# Barra lateral: configuración del servidor y pruebas de control de errores
+# Barra lateral: URL de la API y casillas de prueba
 api_url = st.sidebar.text_input("URL de la API", API_URL).rstrip("/")
 simulate_missing = st.sidebar.checkbox("Prueba: omitir HouseAge de la petición")
 skip_validation = st.sidebar.checkbox(
     "Prueba: saltar la validación local (provoca un 422 de la API)"
 )
 
-# Variables clave introducidas por el usuario
+# Datos que mete el usuario
 med_inc = st.number_input(
     "Ingreso medio de la zona (decenas de miles de $)",
     min_value=0.0, max_value=15.0, value=3.5, step=0.1,
@@ -77,7 +75,7 @@ if st.button("Estimar precio"):
     if simulate_missing:
         payload.pop("HouseAge", None)
 
-    # Validación previa local
+    # Comprobar que no falta nada antes de enviar
     missing = find_missing(payload)
     if skip_validation and missing:
         logger.warning("Validación local saltada (prueba). Faltan: %s", missing)

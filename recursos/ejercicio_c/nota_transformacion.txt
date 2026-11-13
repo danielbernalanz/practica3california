@@ -1,7 +1,7 @@
 Ejercicio c - Transformación de datos de salida
 Autores: David Araiz Saez, Daniel Bernal Anzano (P3)
 
-1. Parámetros de prueba específicos para el Ejercicio C:
+1. Datos de la prueba:
    - MedInc: 5.5 (55,000 $ de ingreso medio)
    - AveRooms: 6.0 (habitaciones medias por vivienda)
    - Variables censales por defecto: HouseAge=29.0, AveBedrms=1.05, Population=1166.0, AveOccup=2.8, Latitude=34.26, Longitude=-118.49
@@ -17,4 +17,4 @@ Autores: David Araiz Saez, Daniel Bernal Anzano (P3)
 4. Resultado legible en dólares mostrado en Streamlit:
    $266,880
 
-En la interfaz de usuario se muestra la métrica principal con el valor formateado "$266,880" y un texto secundario (caption) con el valor crudo "2.668796117647059" para trazabilidad y verificación.
+En la interfaz sale el precio "$266,880" y debajo, en pequeño, el valor que devuelve la API: 2.668796117647059.
