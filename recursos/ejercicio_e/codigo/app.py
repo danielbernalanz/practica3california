@@ -8,12 +8,15 @@ Ejecución:
     uvicorn app:app --reload
 La API queda en http://localhost:8000 (documentación interactiva en /docs).
 """
+from pathlib import Path
+
 import joblib
 import pandas as pd
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-model = joblib.load("modelo_california.pkl")
+MODEL_PATH = Path(__file__).with_name("modelo_california.pkl")
+model = joblib.load(MODEL_PATH)
 
 app = FastAPI(title="Precio de casas en California")
 
