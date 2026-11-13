@@ -1,0 +1,14 @@
+Ejercicio c - Transformación de datos de salida
+Autores: David Araiz Saez, Daniel Bernal Anzano (P3)
+
+1. Valor crudo devuelto por la API FastAPI (/predict):
+   MedHouseVal: 1.5126018234536092 (expresado en cientos de miles de dólares)
+
+2. Lógica de transformación aplicada:
+   precio = med_house_val * 100_000
+   precio_formateado = f"${precio:,.0f}"
+
+3. Resultado legible en dólares mostrado en Streamlit:
+   $151,260
+
+En la interfaz de usuario se muestra la métrica principal con el valor formateado "$151,260" y un texto secundario (caption) con el valor crudo "1.5126018234536092" para trazabilidad y verificación.
