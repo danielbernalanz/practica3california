@@ -1,0 +1,5 @@
+P3 - Precio de casas en California (Daniel Bernal Anzano, David Araiz Saez)
+
+API (FastAPI):       https://practica3-api-5qnf.onrender.com
+Documentacion API:   https://practica3-api-5qnf.onrender.com/docs
+Interfaz (Streamlit): https://practica3-streamlit.onrender.com
